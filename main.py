@@ -18,11 +18,6 @@ client = WebUntisPublicClient(
     school="hh5842"
 )
 
-@app.get("/health")
-def health():
-    return {"status": "ok"}
-
-
 @app.get("/api/classes")
 def get_classes():
     classes = client.list_classes()
@@ -30,8 +25,12 @@ def get_classes():
         {
             "id": c.id,
             "name": c.name,
+            "long_name": c.long_name
+        }
+        for c in classes
+    ]
 
-            
+
 @app.get("/api/debug")
 def debug_timetable():
     today = date.today()
@@ -76,12 +75,7 @@ def debug_timetable():
             ]
             for i in range(1, 5)
         }
-    }            
-            "long_name": c.long_name
-        }
-        for c in classes
-    ]
-    
+    }
 
 @app.get("/api/timetable")
 def timetable(date_value: date | None = None):
