@@ -22,6 +22,10 @@ client = WebUntisPublicClient(
 def health():
     @app.get("/api/classes")
 def get_classes():
+    return {"status": "ok"}
+
+@app.get("/api/classes")
+def get_classes():
     classes = client.list_classes()
     return [
         {
@@ -31,7 +35,7 @@ def get_classes():
         }
         for c in classes
     ]
-    return {"status": "ok"}
+    
 
 @app.get("/api/timetable")
 def timetable(date_value: date | None = None):
