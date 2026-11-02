@@ -30,6 +30,53 @@ def get_classes():
         {
             "id": c.id,
             "name": c.name,
+
+            
+@app.get("/api/debug")
+def debug_timetable():
+    today = date.today()
+    monday = today - datetime.timedelta(days=today.weekday())
+    saturday = monday + datetime.timedelta(days=5)
+
+    url = f"{client._base_url}/entries"
+    params = {
+        "start": monday.strftime("%Y-%m-%d"),
+        "end": saturday.strftime("%Y-%m-%d"),
+        "format": "2",
+        "resourceType": "CLASS",
+        "resources": "1669",
+        "timetableType": "STANDARD",
+        "layout": "START_TIME",
+    }
+
+    raw = client._get(url, params)
+    days = raw.get("days", [])
+    entries = [
+        entry
+        for day in days
+        for entry in day.get("gridEntries", [])
+    ]
+
+    if not entries:
+        return {"message": "Keine Einträge gefunden", "keys": list(raw.keys())}
+
+    entry = entries[0]
+
+    return {
+        "top_level_keys": list(raw.keys()),
+        "entry_keys": list(entry.keys()),
+        "positions": {
+            f"position{i}": [
+                {
+                    "type": item.get("current", {}).get("type"),
+                    "keys": list(item.get("current", {}).keys())
+                }
+                for item in entry.get(f"position{i}", [])
+                if item.get("current")
+            ]
+            for i in range(1, 5)
+        }
+    }            
             "long_name": c.long_name
         }
         for c in classes
