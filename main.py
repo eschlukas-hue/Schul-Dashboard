@@ -20,6 +20,17 @@ client = WebUntisPublicClient(
 
 @app.get("/health")
 def health():
+    @app.get("/api/classes")
+def get_classes():
+    classes = client.list_classes()
+    return [
+        {
+            "id": c.id,
+            "name": c.name,
+            "long_name": c.long_name
+        }
+        for c in classes
+    ]
     return {"status": "ok"}
 
 @app.get("/api/timetable")
