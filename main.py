@@ -38,9 +38,7 @@ def timetable(date_value: date | None = None):
                     "date": str(p.date),
                     "start": str(p.start_time),
                     "end": str(p.end_time),
-                    "subjects": [s.name for s in p.subjects],
-                    "rooms": [r.name for r in p.rooms],
-                    "teachers": [t.name for t in p.teachers],
+                    "raw": str(p),
                 }
                 for p in week.periods
             ]
