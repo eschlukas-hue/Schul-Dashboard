@@ -1,0 +1,19 @@
+:root{--blue:#1677f8;--ink:#172033;--muted:#778195;--line:#e8ebf1;--surface:#fff;--bg:#f5f7fb}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
+button,input{font:inherit}.app-shell{max-width:760px;margin:auto;padding:calc(24px + env(safe-area-inset-top)) 20px 36px}
+.topbar,.section-heading,.date-nav,.lesson-row,.lesson-main,.task-form{display:flex;align-items:center;justify-content:space-between}
+.topbar{gap:16px;margin-bottom:28px}.eyebrow{font-size:10px;letter-spacing:.13em;font-weight:750;color:#8b94a5;margin:0 0 7px}
+h1{font-size:clamp(27px,6vw,36px);letter-spacing:-.045em;margin:0;font-weight:760}h2{font-size:21px;letter-spacing:-.03em;margin:0 0 18px}
+.muted{color:var(--muted);font-size:13px;line-height:1.5;margin:7px 0 0}
+.icon-button,.small-button,.tab{border:1px solid var(--line);background:white;color:var(--ink);border-radius:12px;padding:10px 14px;font-weight:650}
+.tabs{display:flex;background:#e9edf4;padding:4px;border-radius:14px;gap:3px;margin-bottom:28px}.tab{flex:1;border:0;background:transparent;color:#788195;padding:10px}.tab.active{background:white;color:var(--blue);box-shadow:0 1px 4px #17203312}
+.section-heading{align-items:flex-end;margin-bottom:12px}.section-heading h2{margin:0}.date-nav{gap:6px}.small-button{width:36px;height:36px;padding:0;font-size:22px;line-height:1}
+.notice{background:#fff8e6;border:1px solid #f3e4b8;color:#84641d;padding:12px 14px;border-radius:12px;font-size:12px;margin:16px 0}
+.lesson-list{display:flex;flex-direction:column;gap:9px}.lesson-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:13px 14px;display:grid;grid-template-columns:88px 4px 1fr auto;gap:12px;align-items:center;min-height:72px}
+.lesson-time{font-size:11px;font-weight:650;color:#7d8799;line-height:1.5}.lesson-bar{height:43px;border-radius:8px}.lesson-subject{font-weight:720;font-size:15px}.lesson-room{font-size:11px;color:var(--muted);margin-top:4px}.lesson-state{font-size:10px;color:var(--muted);background:#f3f5f8;padding:5px 8px;border-radius:8px}
+.lesson-card.cancelled .lesson-subject{text-decoration:line-through;color:#9aa2b0}.lesson-card.current{border-color:#9bc4ff;box-shadow:0 0 0 2px #1677f815}
+.hidden{display:none!important}.week-list{display:grid;gap:8px}.week-day{background:white;border:1px solid var(--line);border-radius:13px;padding:14px}
+.task-form{gap:8px;margin:18px 0}.task-form input{min-width:0;flex:1;border:1px solid var(--line);border-radius:12px;padding:13px;background:white}.primary-button{background:var(--blue);color:white;border:0;border-radius:12px;padding:13px 16px;font-weight:700}
+.task-list{list-style:none;padding:0;display:grid;gap:8px}.task-list li{background:white;border:1px solid var(--line);border-radius:12px;padding:13px;display:flex;gap:10px;align-items:center;font-size:14px}.task-list input{accent-color:var(--blue)}
+.footer{text-align:center;color:#a1a9b6;font-size:11px;margin-top:38px}
+@media(min-width:600px){.app-shell{padding-top:42px}.lesson-card{padding:15px 18px;grid-template-columns:100px 4px 1fr auto}}

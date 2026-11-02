@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f7fb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Schultag</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">SCHUL-DASHBOARD</p>
+        <h1 id="date-title">Dein Schultag</h1>
+        <p class="muted" id="date-subtitle">Dein Überblick</p>
+      </div>
+      <button class="icon-button" id="today-button" aria-label="Heute anzeigen">Heute</button>
+    </header>
+
+    <nav class="tabs" aria-label="Ansicht">
+      <button class="tab active" data-view="day">Tag</button>
+      <button class="tab" data-view="week">Woche</button>
+      <button class="tab" data-view="tasks">Aufgaben</button>
+    </nav>
+
+    <section id="day-view" class="view">
+      <div class="section-heading">
+        <div><p class="eyebrow">ÜBERSICHT</p><h2>Ganzer Schultag</h2></div>
+        <div class="date-nav">
+          <button class="small-button" id="prev-day" aria-label="Vorheriger Tag">‹</button>
+          <button class="small-button" id="next-day" aria-label="Nächster Tag">›</button>
+        </div>
+      </div>
+      <div class="notice" id="data-notice">Demo-Ansicht: Die echten WebUntis-Daten sind noch nicht angebunden.</div>
+      <div id="lesson-list" class="lesson-list"></div>
+    </section>
+
+    <section id="week-view" class="view hidden">
+      <p class="eyebrow">PLANUNG</p><h2>Wochenübersicht</h2>
+      <p class="muted">Die Wochenansicht wird nach erfolgreicher WebUntis-Anbindung mit echten Daten gefüllt.</p>
+      <div id="week-list" class="week-list"></div>
+    </section>
+
+    <section id="tasks-view" class="view hidden">
+      <p class="eyebrow">DEINE TO-DOS</p><h2>Hausaufgaben</h2>
+      <p class="muted">Hier erscheint später die Synchronisierung mit Apple Erinnerungen.</p>
+      <form id="task-form" class="task-form">
+        <input id="task-input" type="text" placeholder="Hausaufgabe hinzufügen …" required>
+        <button class="primary-button" type="submit">Hinzufügen</button>
+      </form>
+      <ul id="task-list" class="task-list"></ul>
+    </section>
+
+    <footer class="footer">Minimal geplant. Klar durch den Schultag.</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
