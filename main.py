@@ -20,9 +20,8 @@ client = WebUntisPublicClient(
 
 @app.get("/health")
 def health():
-    @app.get("/api/classes")
-def get_classes():
     return {"status": "ok"}
+
 
 @app.get("/api/classes")
 def get_classes():
